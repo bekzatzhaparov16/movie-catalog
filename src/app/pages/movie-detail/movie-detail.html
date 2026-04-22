@@ -1,0 +1,27 @@
+<div class="detail" *ngIf="movie && !isLoading">
+  <div class="backdrop"
+    [style.backgroundImage]="'url(https://image.tmdb.org/t/p/w1280' + movie.backdrop_path + ')'">
+  </div>
+
+  <div class="content">
+    <img [src]="getPosterUrl(movie.poster_path)" [alt]="movie.title" class="poster" />
+    <div class="info">
+      <h1>{{ movie.title }}</h1>
+      <p class="tagline">{{ movie.tagline }}</p>
+      <div class="badges">
+        <span class="rating">⭐ {{ movie.vote_average | number:'1.1-1' }}</span>
+        <span class="year">{{ movie.release_date | date:'yyyy' }}</span>
+        <span class="runtime">{{ movie.runtime }} мин</span>
+      </div>
+      <div class="genres">
+        <span *ngFor="let g of movie.genres" class="genre-tag">{{ g.name }}</span>
+      </div>
+      <p class="overview">{{ movie.overview }}</p>
+      <a routerLink="/" class="back-btn">← Назад</a>
+    </div>
+  </div>
+</div>
+
+<div class="loading" *ngIf="isLoading">
+  <p>Загрузка...</p>
+</div>

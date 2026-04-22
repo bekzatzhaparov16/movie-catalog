@@ -1,0 +1,24 @@
+<div class="home">
+  <header class="hero">
+    <h1>🎬 Movie Catalog</h1>
+    <div class="search-bar">
+      <input
+        type="text"
+        placeholder="Поиск фильмов..."
+        [(ngModel)]="searchQuery"
+        (ngModelChange)="onSearch($event)"
+      />
+    </div>
+  </header>
+
+  <div class="movies-grid" *ngIf="!isLoading">
+    <app-movie-card
+      *ngFor="let movie of movies"
+      [movie]="movie"
+    ></app-movie-card>
+  </div>
+
+  <div class="loading" *ngIf="isLoading">
+    <p>Загрузка...</p>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="favorites">
+  <header class="hero">
+    <h1>❤️ Избранное</h1>
+    <a routerLink="/" class="back-btn">← На главную</a>
+  </header>
+
+  <div class="movies-grid" *ngIf="movies.length > 0">
+    <app-movie-card
+      *ngFor="let movie of movies"
+      [movie]="movie"
+    ></app-movie-card>
+  </div>
+
+  <div class="empty" *ngIf="movies.length === 0">
+    <p>Вы ещё не добавили фильмы в избранное</p>
+    <a routerLink="/">Перейти к каталогу</a>
+  </div>
+</div>
